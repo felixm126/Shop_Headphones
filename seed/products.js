@@ -1,5 +1,5 @@
-const db = require('./db')
-const Product = require('./models/product')
+const db = require('../db')
+const Product = require('../models/product')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
@@ -11,7 +11,7 @@ const main = async () => {
         brand: `Sony`,
         price: 348.00,
         color: `Black`,
-        Description: 'Industry-leading noise canceling with Dual Noise Sensor technology',
+        description: 'Industry-leading noise canceling with Dual Noise Sensor technology',
         rating: 4.7,
         features: `Up to 30-hour battery life, touch sensor controls, speak-to-chat technology, and Alexa enabled`,
         image: `https://i.insider.com/5f36a9e4e89ebf001f044924?width=700`
@@ -70,7 +70,7 @@ const main = async () => {
         name: `Beats Studio Buds`,
         brand: `Beats`,
         price: 99.99,
-        color: Red,
+        color: `Red`,
         description: `True wireless noise cancelling earphones designed for music lovers. Delivers a high-quality audio experience in a sleek design`,
         rating: 4.3,
         features: `Active Noise Cancelling (ANC), Transparency mode, IPX4-rated sweat and water resistance, up to 8 hours of listening time (up to 24 hours with pocket-sized charging case)`,
@@ -91,7 +91,7 @@ const main = async () => {
         brand: `Bose`,
         price: 249.00,
         color: `Cypress Green`,
-        Description: 'Wireless Bluetooth headphones with world-class noise cancellation',
+        description: 'Wireless Bluetooth headphones with world-class noise cancellation',
         rating: 4.8,
         features: `Up to 20-hour battery life, Alexa voice control, and Bose AR enabled`,
         image: `https://assets.bosecreative.com/transform/9d14c760-5f75-45f4-b45d-087469d0e7fe/QCH24_CypressGreen_001_RGB_x2i_RGB?quality=100&io=width:816,height:667,transform:fit&io=width:816,height:667,transform:fit`,
