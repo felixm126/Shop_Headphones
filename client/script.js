@@ -2,42 +2,17 @@ apiUrl = 'http://localhost:3003'
 
 // Create Product class
 class ProductManager {
-	//Initialize with two empty arrays
+	//Initialize with an empty array
 	constructor() {
 		this.products = [] // hold all fetched products within an array
-		this.filteredProducts = [] // hold fetched products that are filtered within an array
 	}
 
 	async getProducts() {
 		try {
-			const response = await axios.get(`${apiUrl}/api/products`)
+			const response = await axios.get(`${this.apiUrl}/api/products`)
 			this.products = response.data // referring to the instance of the class
-			this.filteredProducts = this.products.slice() // return a copy of the array
 		} catch (error) {
 			console.error('Failed to get products.', error)
-		}
-	}
-
-	async filterSearch(filters) {
-		// Destructure filters object to get variables
-		const { brand, color, minPrice, maxPrice, minRating, maxRating } = filters
-		try {
-			// Initialize empty params object for each filter
-			const params = {}
-			if (brand) params.brand = brand
-			if (color) params.color = color
-			if (minPrice) params.minPrice = minPrice
-			if (maxPrice) params.maxPrice = maxPrice
-			if (minRating) params.minRating = minRating
-			if (maxRating) params.maxRating = maxRating
-
-			// Make the API request with the constructed query parameters
-			const response = await axios.get(`${this.apiUrl}/api/products`, {
-				params,
-			})
-			this.filteredProducts = response.data // Update the filtered products
-		} catch (error) {
-			console.error('Failed to filter products:', error)
 		}
 	}
 }
@@ -59,47 +34,19 @@ function displayProducts(products) {
 	})
 }
 
-const sections = ['homeSection', 'productsSection', 'contactsSection']
-// Define function to show specific section and hide the rest - simulating new page
-function displaySection(clickedSection) {
-	sections.forEach((section) => {
-		const sectionElement = document.getElementById(section)
-		if (section === clickedSection) {
-			sectionElement.style.display = 'block'
-		} else {
-			sectionElement.style.display = 'none'
-		}
-	})
-}
+document.addEventListener('DOMContentLoaded', function () {
+	let elems = document.querySelectorAll('.modal')
 
-document
-	.getElementById('applyFiltersButton') // Apply filters based on values inputted from user
-	.addEventListener('click', async () => {
-		// Gather filter values
-		const filters = {
-			brand: document.getElementById('brand').value,
-			color: document.getElementById('color').value,
-			minPrice: document.getElementById('minPrice').value,
-			maxPrice: document.getElementById('maxPrice').value,
-			minRating: document.getElementById('minRating').value,
-			maxRating: document.getElementById('maxRating').value,
-		}
-		// Call filtersearch method
-		await productManager.filterSearch(filters)
-		// Call displayproducts and update UI with filtered products
-		displayProducts(productManager.filteredProducts)
+	// Initialize all modals with options, including the onCloseEnd option
+	let instances = M.Modal.init(elems, {
+		onCloseEnd: function () {
+			// This function will be called when any modal is closed
+			let whenModalCloses = 'We will contact you as soon as possible!'
+			alert(whenModalCloses)
+		},
+		dismissible: true,
 	})
-
-// Event listeners when clicked will display appropriate section
-document
-	.getElementById('homeButton')
-	.addEventListener('click', () => displaySection('homeSection'))
-document
-	.getElementById('productsButton')
-	.addEventListener('click', () => displaySection('productsContainer'))
-document
-	.getElementById('contactInfoButton')
-	.addEventListener('click', () => displaySection('contactsSection'))
+})
 
 // Load products on page load
 document.addEventListener('DOMContentLoaded', async () => {
