@@ -33,6 +33,26 @@ const getProductByName = async (req, res) => {
         return res.status(500).send(error.message)
     }
 }
+const getProductByCriteria = async (req, res) => {
+    try {
+        const { name, brand, price } = req.query
+        let query = {}
+
+        if (name) query.name = new RegExp(name, 'i');
+        if (brand) query.brand = brand
+        if (price) query.price = { $lte: price }
+
+        const products = await Product.find(query)
+
+        if (products.length) {
+            res.json(products)
+        } else {
+            res.status(404).send('No products found matching the specified criteria')
+        }
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+}
 const createProduct = async (req, res) => {
     try {
         const product = await new Product(req.body)
@@ -73,6 +93,7 @@ module.exports = {
     getAllProducts,
     getProductById,
     getProductByName,
+    getProductByCriteria,
     createProduct,
     updateProduct,
     deleteProduct
