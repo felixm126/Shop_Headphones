@@ -1,7 +1,7 @@
 {
   "name": "shop_headphones",
   "version": "1.0.0",
-  "description": "",
+  "description": "- Fork and clone this repository into your IDE.\r - Node.js installed with npm.\r - Install MongoDB, Mongoose, and Express.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
