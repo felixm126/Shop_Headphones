@@ -157,6 +157,7 @@ html {
     border-radius: 6px;
     overflow: hidden;
   }
+
   .title {
     font-size: 28px;
   }
@@ -172,5 +173,19 @@ html {
       rgba(145.56, 143.38, 123.73, 0) 100%
     );
     padding: 10px;
+  }
+  .buttonOpen,
+  .buttonClose {
+    background-color: #0a5f57;
+    color: #ffffffb9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+    top: 1670px;
+    left: 160px;
+  }
+  .buttonOpen:hover,
+  .buttonClose:hover {
+    background-color: #00796b;
   }
 }
