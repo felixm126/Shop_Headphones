@@ -1,67 +1,80 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
-        <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-        />
-    </head>
-    <body>
-        <div class="modalContainer">
-            <a
-                class="waves-effect waves-light button modal-trigger buttonOpen"
-                href="#myModal"
-                >Contact Us</a
-            >
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <h4>Enter Details</h4>
-                    <form id="userDetailsForm">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" />
-                        <label for="number">Number:</label>
-                        <input type="tel" id="number" name="number" />
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" />
-                        <input type="submit" value="Submit Form" />
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <a
-                        href="#!"
-                        class="modal-close waves-effect waves-green button-flat buttonClose"
-                        >Close</a
-                    >
-                </div>
-            </div>
-        </div>
-        <div class="page">
-            <div class="top-bar">
-                <div class="title">Headphones BPM</div>
-                <div class="navigation">
-                    <div class="tab">Home</div>
-                    <div class="tab">Products</div>
-                </div>
-            </div>
-            <div class="group">
-                <div class="list">
-                </div>
-                </div>
-            </div>
-            <div class="group">
-                <div class="list">
-                </div>
-            </div>
-            <div class="group">
-                <div class="list">
-                </div>
-            </div>
-        </div>
-    </body>
-    <script src="script.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
+	</head>
+	<body>
+		<div class="modalContainer">
+			<a
+				class="waves-effect waves-light button modal-trigger buttonOpen"
+				href="#contactModal"
+				>Contact Us</a
+			>
+			<div id="contactModal" class="modal">
+				<div class="modal-content">
+					<h4>Enter Details</h4>
+					<form id="userDetailsForm">
+						<label for="name">Name:</label>
+						<input type="text" id="name" name="name" />
+						<label for="number">Number:</label>
+						<input type="tel" id="number" name="number" />
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="email" />
+						<input type="submit" value="Submit Form" />
+					</form>
+				</div>
+				<div class="modal-footer">
+					<a
+						href="#!"
+						class="modal-close waves-effect waves-green button-flat buttonClose"
+						>Close</a
+					>
+				</div>
+			</div>
+			<div id="productInfoModal" class="modal">
+				<div class="modal-content">
+					<h4>Product Information</h4>
+					<p id="productBrandModal"></p>
+					<p id="productColorModal"></p>
+					<p id="productRatingModal"></p>
+					<p id="productDescriptionModal"></p>
+					<p id="productFeaturesModal"></p>
+				</div>
+				<div class="modal-footer">
+					<a
+						href="#!"
+						class="modal-close waves-effect waves-green button-flat buttonClose"
+						>Close</a
+					>
+				</div>
+			</div>
+			<div class="page">
+				<div class="top-bar">
+					<div class="title">Headphones BPM</div>
+					<div class="navigation">
+						<div class="tab">Home</div>
+						<div class="tab">Products</div>
+					</div>
+				</div>
+				<div class="group">
+					<div class="list"></div>
+				</div>
+			</div>
+			<div class="group">
+				<div class="list"></div>
+			</div>
+			<div class="group">
+				<div class="list"></div>
+			</div>
+		</div>
+	</body>
+	<script src="script.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </html>
