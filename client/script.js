@@ -36,6 +36,7 @@ async function displayProducts() {
 		// Create and set the image container
 		const imageContainer = document.createElement('div')
 		imageContainer.className = 'image-container'
+
 		const image = document.createElement('div')
 		image.className = 'image'
 		image.style.backgroundImage = `url(${product.image})`
@@ -45,8 +46,15 @@ async function displayProducts() {
 		const textContent = document.createElement('div')
 		textContent.className = 'text-content'
 
+		// Insert product price
+		const productPrice = document.createElement('div')
+		productPrice.textContent = `$${product.price}`
+		textContent.appendChild(productPrice)
+
 		// Insert product name
 		const productName = document.createElement('div')
+		productName.style.fontFamily = 'Impact, Charcoal, sans-serif'
+		productName.style.fontSize = '20px'
 		productName.textContent = product.name
 		textContent.appendChild(productName)
 
@@ -54,12 +62,38 @@ async function displayProducts() {
 		card.appendChild(imageContainer)
 		card.appendChild(textContent)
 
+		card.addEventListener('click', () => {
+			document.querySelector(
+				'#productInfoModal .modal-content h4'
+			).textContent = product.name
+			document.getElementById(
+				'productBrandModal'
+			).textContent = `Brand: ${product.brand}`
+			document.getElementById(
+				'productColorModal'
+			).textContent = `Color: ${product.color}`
+			document.getElementById(
+				'productRatingModal'
+			).textContent = `Rating: ${product.rating}`
+			document.getElementById(
+				'productDescriptionModal'
+			).textContent = `Description: ${product.description}`
+			document.getElementById(
+				'productFeaturesModal'
+			).textContent = `Features: ${product.features}`
+
+			const instance = M.Modal.getInstance(
+				document.getElementById('productInfoModal')
+			)
+			instance.open()
+		})
+
 		// Append card to the list container
 		listContainer.appendChild(card)
 	})
 }
 
-// Event listiner for when DOM content is loaded
+// Event listener for when DOM content is loaded
 document.addEventListener('DOMContentLoaded', async () => {
 	await productManager.getProducts()
 	displayProducts()
@@ -67,11 +101,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 	// Initialize all modals with options, including the onCloseEnd option
 	let instances = M.Modal.init(elems, {
-		onCloseEnd: function () {
-			// This function will be called when any modal is closed
-			let onModalClose = 'We will contact you as soon as possible!'
-			alert(onModalClose)
-		},
+		// onCloseEnd: function () {
+		// 	// This function will be called when any modal is closed
+		// 	let onModalClose = 'We will contact you as soon as possible!'
+		// 	alert(onModalClose)
+		// },
 		dismissible: true, // able to exit by keyboard or overlay click
 	})
 })
